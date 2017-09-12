@@ -1,0 +1,25 @@
+{
+    "name": "larakit/lk-thumb",
+    "description": "[Larakit]",
+    "version": "1.0.0",
+    "keywords": [
+        "laravel",
+        "laravel 5",
+        "larakit"
+    ],
+    "license": "MIT",
+    "require": {
+        "larakit/lk-hashids": "*",
+        "larakit/hlp-image": "*",
+        "laravel/framework": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Larakit\\Thumb\\": "src"
+        },
+        "files": [
+            "src/init.php"
+        ]
+    },
+    "minimum-stability": "dev"
+}
