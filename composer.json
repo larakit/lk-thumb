@@ -11,7 +11,7 @@
     "require": {
         "larakit/lk-hashids": "*",
         "larakit/hlp-image": "*",
-        "laravel/framework": "*"
+        "larakit/lk-model": "*"
     },
     "autoload": {
         "psr-4": {

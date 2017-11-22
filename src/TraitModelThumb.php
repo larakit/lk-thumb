@@ -42,7 +42,8 @@ trait TraitModelThumb {
             $tmp    = $config;
             $config = [];
             foreach($tmp as $k => $v) {
-                $config[$k] = Arr::get($v, 'thumb');
+                $val        = Arr::get($v, 'thumb');
+                $config[$k] = $val ? $val : $v;
             }
             
         }
@@ -59,6 +60,7 @@ trait TraitModelThumb {
                 $ret[$type]['sizes'][$size]['url_crop'] = route('thumb-crop', compact('model', 'id', 'type', 'size'));
             }
         }
+        
         //        dd($ret);
         
         return $ret;
