@@ -223,27 +223,26 @@ abstract class Thumb {
     
     function processing($source) {
         $original = \Image::make($source);
-        //сохраним оригинал в размере не более 1920х1920
-        $file = public_path() . $this->makeUrl();
-        $file = str_replace('\\', '/', $file);
-        $dir  = dirname($file);
-        if(!file_exists($dir)) {
+        $file     = public_path() . $this->makeUrl();
+        $dir      = dirname($file);
+        if (!file_exists($dir)) {
             mkdir($dir, 0777, true);
         }
-        if($original->width() > 1920) {
-            $original->resize(
-                1920, 1920, function ($constraint) {
-                $constraint->aspectRatio();
+        if ('gif' != $this->ext) {
+            //сохраним оригинал в размере не более 1920х1920
+            if ($original->width() > 1920) {
+                $original->resize(1920, 1920, function ($constraint) {
+                    $constraint->aspectRatio();
+                });
             }
-            );
+            $original->save($file, 100);
+        } else {
+            copy($source, $file);
         }
-        $original->save($file, 100);
         //сделаем превьюшки для всех размеров
-        foreach($this->getSizes() as $name => $size) {
+        foreach ($this->getSizes() as $name => $size) {
             $this->processingSize($file, $name);
         }
-        
-        return true;
     }
     
     function processingSize($source, $name) {
