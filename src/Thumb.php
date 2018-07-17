@@ -243,6 +243,7 @@ abstract class Thumb {
         foreach ($this->getSizes() as $name => $size) {
             $this->processingSize($file, $name);
         }
+        return true;
     }
     
     function processingSize($source, $name) {
