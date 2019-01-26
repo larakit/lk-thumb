@@ -259,7 +259,7 @@ abstract class Thumb {
         }
         $img = \Image::make($source);
         foreach($size->getFilters() as $filter) {
-            $callback = \Config::get('larakit.thumbfilters.' . $filter);
+            $callback = LkNgThumb::filter($filter);
             if(!is_callable($callback)) {
                 throw  new \Exception('Фильтр для THUMB с названием "' . $filter . '" не найден!');
             }
